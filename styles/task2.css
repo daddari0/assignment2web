@@ -1,0 +1,352 @@
+/* Task 2: Component Library (Flexbox Only) */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  padding: 20px;
+}
+
+/* Simple Navigation */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #0066cc;
+  font-weight: bold;
+}
+
+.nav a.active {
+  color: #333;
+  border-bottom: 2px solid #333;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.page-title h1 {
+  margin: 0 0 8px 0;
+}
+
+.page-title p {
+  margin: 0;
+  color: #666;
+}
+
+/* Container for all 5 components */
+.library {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.component-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.component-box h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #111;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* Shared Buttons */
+.btn {
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #0066cc;
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: #ccc;
+  color: #333;
+}
+
+/* =========================================================
+   1. Navigation Bar
+   - margin-left: auto pushes buttons to the right edge
+   - flex-shrink: 0 prevents buttons from shrinking
+   ========================================================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 10px 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #0066cc;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.nav-buttons {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+}
+
+/* =========================================================
+   2. Equal-Height Cards Row
+   - align-items: stretch makes all cards equal height
+   - margin-top: auto on button aligns all buttons on one line
+   - No fixed height
+   ========================================================= */
+.card-row {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 240px;
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0 0 15px 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.card .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* =========================================================
+   3. Pagination Bar
+   - margin: 0 auto centers page numbers
+   - margin-left: auto pushes result count to right edge
+   - flex-wrap: wrap handles small screens
+   ========================================================= */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 15px;
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 auto;
+}
+
+.page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.85rem;
+  padding: 0 6px;
+}
+
+.page-link.active {
+  background-color: #0066cc;
+  color: #fff;
+  border-color: #0066cc;
+  font-weight: bold;
+}
+
+.page-count {
+  color: #777;
+  font-size: 0.85rem;
+  margin-left: auto;
+}
+
+/* =========================================================
+   4. Comment Block
+   - Avatar has flex-shrink: 0
+   - Text column has flex: 1 and min-width: 0
+   - Text wraps beside avatar and never slides under it
+   ========================================================= */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #0066cc;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.comment-body {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.comment-author {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.comment-text {
+  margin: 0;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   5. Pricing Table
+   - Recommended plan is taller via natural padding and content
+   - align-items: center centers plans vertically
+   - No fixed height
+   ========================================================= */
+.pricing-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.plan {
+  flex: 1 1 220px;
+  max-width: 300px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan.recommended {
+  border: 2px solid #0066cc;
+  background-color: #fff;
+  padding: 35px 20px; /* Taller naturally without fixed height */
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.15);
+}
+
+.plan-badge {
+  background-color: #0066cc;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+.plan h3 {
+  margin: 0;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #111;
+  margin: 0;
+}
+
+.price span {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.plan ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.plan .btn {
+  margin-top: auto;
+  width: 100%;
+}

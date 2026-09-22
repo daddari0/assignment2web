@@ -1,0 +1,340 @@
+/* Task 3: Three Layouts, One Markup (CSS Grid & Flexbox) */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  padding: 20px;
+}
+
+/* Simple Navigation */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #0066cc;
+  font-weight: bold;
+}
+
+.nav a.active {
+  color: #333;
+  border-bottom: 2px solid #333;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-title h1 {
+  margin: 0 0 5px 0;
+}
+
+.page-title p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Mode Switcher Links */
+.mode-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 15px;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.mode-bar span {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.mode-btn {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #555;
+  background: #eee;
+}
+
+.target-anchor {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visibility of Mode Notes */
+.mode-note {
+  display: none;
+  max-width: 900px;
+  margin: 0 auto 25px auto;
+  background: #eaf2fb;
+  border-left: 4px solid #0066cc;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: #1e3a8a;
+}
+
+body:not(:has(:target)) .note-grid,
+body:has(#grid:target) .note-grid {
+  display: block;
+}
+body:has(#list:target) .note-list {
+  display: block;
+}
+body:has(#magazine:target) .note-magazine {
+  display: block;
+}
+
+/* Active Button Highlights */
+body:not(:has(:target)) .btn-grid,
+body:has(#grid:target) .btn-grid {
+  background-color: #0066cc;
+  color: #fff;
+}
+body:has(#list:target) .btn-list {
+  background-color: #0066cc;
+  color: #fff;
+}
+body:has(#magazine:target) .btn-magazine {
+  background-color: #0066cc;
+  color: #fff;
+}
+
+/* Shared Item Elements */
+.item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.item-img {
+  background-color: #0066cc;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.item-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-tag {
+  font-size: 0.75rem;
+  color: #0066cc;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.item-title {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  color: #111;
+  line-height: 1.3;
+}
+
+.item-desc {
+  margin: 0 0 10px 0;
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.item-date {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+/* =========================================================
+   MODE 1: Grid of Cards (.layout-grid)
+   - Columns follow window width (auto-fit minmax)
+   - Flexbox inside item aligns content and date
+   ========================================================= */
+.catalog.layout-grid,
+body:not(:has(:target)) .catalog,
+body:has(#grid:target) .catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.catalog.layout-grid .item,
+body:not(:has(:target)) .catalog .item,
+body:has(#grid:target) .catalog .item {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog.layout-grid .item-img,
+body:not(:has(:target)) .catalog .item-img,
+body:has(#grid:target) .catalog .item-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.catalog.layout-grid .item-content,
+body:not(:has(:target)) .catalog .item-content,
+body:has(#grid:target) .catalog .item-content {
+  padding: 15px;
+  flex: 1 1 auto;
+}
+
+.catalog.layout-grid .item-desc,
+body:not(:has(:target)) .catalog .item-desc,
+body:has(#grid:target) .catalog .item-desc {
+  flex-grow: 1;
+}
+
+.catalog.layout-grid .item-date,
+body:not(:has(:target)) .catalog .item-date,
+body:has(#grid:target) .catalog .item-date {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+/* =========================================================
+   MODE 2: Compact List (.layout-list)
+   - Every item becomes a row
+   - Picture on left, title & text in middle, date at right edge
+   ========================================================= */
+.catalog.layout-list,
+body:has(#list:target) .catalog {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.catalog.layout-list .item,
+body:has(#list:target) .catalog .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 18px;
+  flex-wrap: wrap; /* Wraps cleanly on mobile */
+}
+
+.catalog.layout-list .item-img,
+body:has(#list:target) .catalog .item-img {
+  width: 70px;
+  height: 70px;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.catalog.layout-list .item-content,
+body:has(#list:target) .catalog .item-content {
+  flex: 1 1 250px;
+  padding: 0;
+}
+
+.catalog.layout-list .item-desc,
+body:has(#list:target) .catalog .item-desc {
+  margin: 0;
+}
+
+.catalog.layout-list .item-date,
+body:has(#list:target) .catalog .item-date {
+  margin-left: auto;
+  white-space: nowrap;
+  font-weight: bold;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* =========================================================
+   MODE 3: Magazine Front Page (.layout-magazine)
+   - Lead item spans 2 columns and 2 rows
+   - Others fill in around it (grid-auto-flow: dense)
+   ========================================================= */
+.catalog.layout-magazine,
+body:has(#magazine:target) .catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  grid-auto-flow: dense;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.catalog.layout-magazine .item,
+body:has(#magazine:target) .catalog .item {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog.layout-magazine .item-img,
+body:has(#magazine:target) .catalog .item-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.catalog.layout-magazine .item-content,
+body:has(#magazine:target) .catalog .item-content {
+  padding: 15px;
+  flex: 1 1 auto;
+}
+
+.catalog.layout-magazine .item-desc,
+body:has(#magazine:target) .catalog .item-desc {
+  flex-grow: 1;
+}
+
+.catalog.layout-magazine .item-date,
+body:has(#magazine:target) .catalog .item-date {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+/* Hero Lead Article */
+.catalog.layout-magazine .item:first-child,
+body:has(#magazine:target) .catalog .item:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+  border: 2px solid #0066cc;
+}
+
+.catalog.layout-magazine .item:first-child .item-img,
+body:has(#magazine:target) .catalog .item:first-child .item-img {
+  aspect-ratio: 16 / 10;
+  background-color: #004c99;
+}
+
+.catalog.layout-magazine .item:first-child .item-title,
+body:has(#magazine:target) .catalog .item:first-child .item-title {
+  font-size: 1.35rem;
+}

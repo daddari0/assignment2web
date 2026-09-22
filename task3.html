@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3: Three Layouts, One Markup (Grid Mode)</title>
+  <link rel="stylesheet" href="styles/task3.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="task1.html">Task 1: Grid</a>
+    <a href="task2.html">Task 2: Flexbox</a>
+    <a href="task3.html" class="active">Task 3: Layouts</a>
+  </nav>
+
+  <!-- Target Anchors for CSS Hash Switching -->
+  <span id="grid" class="target-anchor"></span>
+  <span id="list" class="target-anchor"></span>
+  <span id="magazine" class="target-anchor"></span>
+
+  <div class="page-title">
+    <h1>Task 3: Three Layouts, One Markup</h1>
+    <p>12 articles displayed in three modes by changing a single class on the container &bull; HTML untouched</p>
+  </div>
+
+  <!-- Mode Switcher -->
+  <div class="mode-bar">
+    <span>Layout Mode:</span>
+    <a href="#grid" class="mode-btn btn-grid">1. Grid of Cards</a>
+    <a href="#list" class="mode-btn btn-list">2. Compact List</a>
+    <a href="#magazine" class="mode-btn btn-magazine">3. Magazine Front Page</a>
+  </div>
+
+  <!-- Required 1-Sentence Summaries -->
+  <div class="mode-note note-grid">
+    <strong>Mode 1 (Grid of Cards):</strong> CSS Grid's <code>repeat(auto-fit, minmax(min(100%, 240px), 1fr))</code> dynamically controls responsive column calculation based on window width, while inner Flexbox distributes card content and anchors metadata to the baseline.
+  </div>
+  <div class="mode-note note-list">
+    <strong>Mode 2 (Compact List):</strong> CSS Grid stacks each article into a single-column row sequence, while inner Flexbox arranges the thumbnail on the left, expands the text body in the center, and pins the date to the far right edge via <code>margin-left: auto</code>.
+  </div>
+  <div class="mode-note note-magazine">
+    <strong>Mode 3 (Magazine Front Page):</strong> CSS Grid's <code>grid-auto-flow: dense</code> with <code>grid-column/row: span 2</code> commands the prominent hero article placement while seamlessly packing subsequent articles around it, supported by inner Flexbox for card component styling.
+  </div>
+
+  <!-- Container with class: layout-grid -->
+  <main class="catalog layout-grid" id="catalog">
+    <article class="item">
+      <div class="item-img" style="background-color: #0066cc;">01</div>
+      <div class="item-content">
+        <span class="item-tag">AI & Robotics</span>
+        <h3 class="item-title">Autonomous Vision in Quadcopters</h3>
+        <p class="item-desc">Stereo cameras combined with inertial measurement units enable sub-centimeter localization in dynamic unmapped environments without GPS.</p>
+        <time class="item-date">Sep 21, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #238636;">02</div>
+      <div class="item-content">
+        <span class="item-tag">Cloud Systems</span>
+        <h3 class="item-title">Multi-Region Kubernetes Clusters</h3>
+        <p class="item-desc">Strategies for managing cross-region state replication, quorum consistency, and automated failover.</p>
+        <time class="item-date">Sep 19, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #c22526;">03</div>
+      <div class="item-content">
+        <span class="item-tag">Web Tech</span>
+        <h3 class="item-title">Modern CSS Layout Engines</h3>
+        <p class="item-desc">Replacing media queries with fluid mathematical functions like clamp, min, and CSS Grid auto-fit algorithms.</p>
+        <time class="item-date">Sep 17, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #8957e5;">04</div>
+      <div class="item-content">
+        <span class="item-tag">Quantum</span>
+        <h3 class="item-title">Fault-Tolerant Quantum Cryptography</h3>
+        <p class="item-desc">Surface codes and topological qubits are enabling practical quantum simulations and post-quantum encryption.</p>
+        <time class="item-date">Sep 15, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #d29922;">05</div>
+      <div class="item-content">
+        <span class="item-tag">Security</span>
+        <h3 class="item-title">Kernel-Level eBPF Threat Hunting</h3>
+        <p class="item-desc">Tracing unauthorized process execution and container privilege escalation directly at the Linux kernel.</p>
+        <time class="item-date">Sep 13, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #cf222e;">06</div>
+      <div class="item-content">
+        <span class="item-tag">Databases</span>
+        <h3 class="item-title">Sub-Millisecond LSM-Tree Storage</h3>
+        <p class="item-desc">Architectural comparison of write amplification, compaction overhead, and cache efficiency.</p>
+        <time class="item-date">Sep 11, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #0969da;">07</div>
+      <div class="item-content">
+        <span class="item-tag">Systems</span>
+        <h3 class="item-title">Porting Native C++ Games to WebAssembly</h3>
+        <p class="item-desc">Compiling renderers directly to near-metal browser threads using SIMD and shared memory.</p>
+        <time class="item-date">Sep 09, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #1a7f37;">08</div>
+      <div class="item-content">
+        <span class="item-tag">Networking</span>
+        <h3 class="item-title">Zero-Trust Service Meshes</h3>
+        <p class="item-desc">Eliminating perimeter trust through continuous mutual TLS authentication between microservices.</p>
+        <time class="item-date">Sep 07, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #9a6700;">09</div>
+      <div class="item-content">
+        <span class="item-tag">Hardware</span>
+        <h3 class="item-title">Edge Computing in Telecom Towers</h3>
+        <p class="item-desc">Deploying localized computational pods within base stations for ultra-low latency augmented reality.</p>
+        <time class="item-date">Sep 05, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #bf4b4b;">10</div>
+      <div class="item-content">
+        <span class="item-tag">Typography</span>
+        <h3 class="item-title">Fluid Typography Scales with CSS clamp</h3>
+        <p class="item-desc">Leveraging linear interpolation to deliver consistent legibility from smartwatches to 4K monitors.</p>
+        <time class="item-date">Sep 03, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #6e40c9;">11</div>
+      <div class="item-content">
+        <span class="item-tag">Architecture</span>
+        <h3 class="item-title">Event-Driven Microfrontends</h3>
+        <p class="item-desc">Decoupling large enterprise web applications into independently deployable domain modules.</p>
+        <time class="item-date">Sep 01, 2026</time>
+      </div>
+    </article>
+    <article class="item">
+      <div class="item-img" style="background-color: #116329;">12</div>
+      <div class="item-content">
+        <span class="item-tag">Green Tech</span>
+        <h3 class="item-title">Carbon-Aware Batch Processing</h3>
+        <p class="item-desc">Scheduling compute-intensive neural network training runs based on solar and wind grid availability.</p>
+        <time class="item-date">Aug 28, 2026</time>
+      </div>
+    </article>
+  </main>
+
+</body>
+</html>
